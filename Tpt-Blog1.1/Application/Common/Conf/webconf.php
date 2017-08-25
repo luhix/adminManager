@@ -1,0 +1,1 @@
+<?php return array('WEB_URL'=>'0','WEB_TPT'=>'default','GEETEST_ID'=>'b733a818b5b0c444592c450ce6495830','GEETEST_KEY'=>'86eefa57c021ca5df572ce9103b411f5','WEB_YID'=>'','WEB_TAG'=>'新媒体,iphone8,游戏,视频,淘宝,雷军,网红,人工智能,大朋VR,机器人,小米,综艺,真人秀,自定义','WEB_CID'=>'','WEB_CKEY'=>'',); ?>

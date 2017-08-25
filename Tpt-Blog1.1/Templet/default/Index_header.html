@@ -1,0 +1,71 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/favicon.ico" rel="shortcut icon">
+<link rel="stylesheet" href="__HOME__/css/global.css">
+<link rel="stylesheet" href="__HOME__/css/style.css">
+<link rel="stylesheet" href="__HOME__/css/demo.css">
+<script src="__HOME__/js/jquery-1.9.1.min.js"></script>
+<script src="__HOME__/js/jquery.cbFlyout.js"></script>
+</head>
+<body>
+<div class="tpt-header cl">
+	<div class="tpt-wp cl">
+		<div class="tpt-ml-7">
+			<div class="tpt-mds">
+				<div class="logo">
+					<a href="__ROOT__/" title="{$tptc.title}"><img src="__ROOT__/Uploads{$tpte.logo}" alt="{$tpte.title}"></a>
+				</div>
+				<div id="left-flyout-nav" class="layout-left-flyout visible-sm">
+				</div>
+				<div class="layout-right-content">
+					<header class="the-header">
+					<div class="navbar container tpt-right-1024">
+						<!-- Trigger -->
+						<a class="btn-navbar btn-navbar-navtoggle btn-flyout-trigger" href="javascript:;"><i style="color: #fff;font-size: 28px;" class="iconfont">&#xe607;</i></a>
+						<!-- Structure -->
+						<nav class="the-nav nav-collapse clearfix">
+						<ul id="menu" class="nav nav-pill pull-left">
+							<foreach name="tpta" item="vo" key="k">
+							<if condition="$vo['show'] eq 1">
+							<li class="dropdown"><a <if condition="$vo['blank'] eq 1">target="_blank" </if>href="{$vo.link}">{$vo.name}</a>
+							<if condition="$vo['link'] neq ''"><else/>
+							<ul class="subnav">
+								</if>
+								<foreach name="tptas" item="vs" key="k">
+								<if condition ="$vo.id eq $vs['tid']">
+								<if condition="$vs['show'] eq 1">
+								<li><a <if condition="$vs['blank'] eq 1">target="_blank" </if>href="{$vs.link}">{$vs.name}</a></li>
+								</if>
+								</if>
+								</foreach>
+								<if condition="$vo['link'] neq ''"><else/>
+							</ul>
+							</if>
+							</li>
+							</if>
+							</foreach>
+						</ul>
+						</nav>
+					</div>
+					</header>
+				</div>
+			</div>
+		</div>
+		<div class="tpt-mr-3">
+			<div class="tpt-mds">
+				<if condition="$tpte['open'] eq 1">
+				<div class="status">
+					<a target="_blank" href="{:U('index/tougao')}">欢迎投稿</a>
+				</div>
+				</if>
+				<div class="search">
+					<form action="__ROOT__/index.php/search.html" method="get">
+						<input placeholder="输入关键字" name="kw" value="<?php echo I('kw');?>" type="text">
+						<button value="查询" type="submit"></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

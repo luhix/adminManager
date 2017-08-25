@@ -1,0 +1,55 @@
+<include file="Public:header"/>
+<div class="aright">
+
+<div class="arz cl"><a href="{:U('category/add')}"><i class="layui-icon">&#xe608;</i>添加栏目</a></div>
+<form method="post" class="aform cl">
+<table width="100%">
+<tr>
+<th width="10%" align="center">栏目编号</th>
+<th width="20%" align="center">栏目名称</th>
+<th width="10%" align="center">栏目类型</th>
+<th width="20%" align="center">栏目图片</th>
+<th width="20%" align="center">添加时间</th>
+<th width="20%" align="center">基本操作</th>
+</tr>
+<foreach name="c" item="vo" key="k">
+<tr>
+<td align="center">{$vo.id}</td>
+<td style="padding-left: 20px;"><a target="_blank" href="__ROOT__/index.php?m=Home&c=index&a=category&id={$vo.id}">{$vo.name}</a></td>
+<td align="center">
+<if condition="$vo['type'] eq 1">文章</if>
+<if condition="$vo['type'] eq 2">产品</if>
+</td>
+<td align="center"><if condition="$vo['pic'] neq ''"><img src="__ROOT__/Uploads{$vo.pic}" height="30"><else />暂无图片</if></td>
+<td align="center">{$vo.time|date="Y-n-d",###}</td>
+<td align="center">
+<a href="{:U('category/edit',array('id'=>$vo['id']))}">修改</a> | <a href="{:U('category/delete',array('id'=>$vo['id']))}" onclick="return confirm('您确定删除吗？');">删除</a>
+</td>
+</tr>
+<foreach name="cs" item="vs" key="k">
+<if condition = "$vo.id eq $vs['tid']">
+<tr>
+<td align="center">{$vs.id}</td>
+<td style="padding-left: 20px;">———— <a target="_blank" href="__ROOT__/index.php?m=Home&c=index&a=category&id={$vs.id}">{$vs.name}</a></td>
+<td align="center">
+<if condition="$vs['type'] eq 1">文章</if>
+<if condition="$vs['type'] eq 2">产品</if>
+</td>
+<td align="center"><if condition="$vs['pic'] neq ''"><img src="__ROOT__/Uploads{$vs.pic}" height="30"><else />暂无图片</if></td>
+<td align="center">{$vs.time|date="Y-n-d",###}</td>
+<td align="center">
+<a href="{:U('category/edit',array('id'=>$vs['id']))}">修改</a> | <a href="{:U('category/delete',array('id'=>$vs['id']))}" onclick="return confirm('您确定删除吗？');">删除</a>
+</td>
+</tr>
+</if>
+</foreach>
+</foreach>
+</table>
+</form> 
+</div>
+</div>
+</body>
+</html>
+
+
+

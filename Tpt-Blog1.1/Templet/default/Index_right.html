@@ -1,0 +1,52 @@
+<div class="tpt-sidebar cl">
+	<h3>热门标签</h3>
+	<ul class="tpt-g cl">
+		<volist name="tagss" id="tag" key="k" offset="0" length='30'>
+			<li><a class="tpt-g-{$k}" href='__ROOT__/index.php/tags.html?ks={$tag}'>{$tag}</a></li>
+		</volist>
+	</ul>
+</div>
+<div class="tpt-sidebar cl">
+	<h3>热门推荐</h3>
+	<ul class="tpt-c cl">
+		<volist name="tptb" id="vo">
+		<li><if condition="C('WEB_URL') eq 1"><a title="{$vo.title}" href="__ROOT__/article/{$vo.id}.html"><else/>
+		<a title="{$vo.title}" href="{:U('Home/index/article',array('id'=>$vo['id']))}"></if>{$vo.title}</a>
+		<p>
+			{$vo.time|date="Y-m-d H:i:s",###}
+		</p>
+		</li>
+		</volist>
+	</ul>
+</div>
+<div class="tpt-sidebar cl">
+	<h3>精选内容</h3>
+	<ul class="tpt-d cl">
+		<volist name="tptc" id="vo">
+		<li>
+		<div>
+		<if condition="C('WEB_URL') eq 1"><a title="{$vo.title}" href="__ROOT__/article/{$vo.id}.html"><else/>
+		<a title="{$vo.title}" href="{:U('Home/index/article',array('id'=>$vo['id']))}"></if>
+		<if condition="$vo[pic] neq ''">
+		<img src="__ROOT__/Uploads{$vo.pic}" alt="{$vo.title}">
+		<else /> 
+        <img src="__HOME__/img/1.jpg" alt="暂无缩略图">
+        </if>
+		</a>
+		</div>
+		<p>
+			<if condition="C('WEB_URL') eq 1"><a title="{$vo.title}" href="__ROOT__/article/{$vo.id}.html"><else/>
+			<a title="{$vo.title}" href="{:U('Home/index/article',array('id'=>$vo['id']))}"></if>{$vo.title}</a>
+		</p>
+		</li>
+		</volist>
+	</ul>
+</div>
+<div class="tpt-sidebar cl">
+	<h3>友情连接</h3>
+	<ul class="tpt-e cl">
+		<volist name="tptd" id="vo">
+			<li><a target="_blank" href="{$vo.link}">{$vo.name}</a></li>
+		</volist>
+	</ul>
+</div>

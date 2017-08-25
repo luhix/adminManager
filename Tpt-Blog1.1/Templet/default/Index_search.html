@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>{$tpte.author} - <?php echo I('kw');?></title>
+<meta name="keywords" content="{$tpte.keywords}"/>
+<meta name="description" content="{$tpte.description}"/>
+<include file="Index:header"/>
+<div class="tpt-wp tpt-pat-75 cl">
+	<div class="tpt-ml-7">
+		<div class="breadcrumb cl">
+显示结果 "
+			<?php echo I('kw');?>
+			"
+		</div>
+		<ul class="main">
+			<volist name="tpth" id="vo">
+			<if condition="$vo[open] eq 1">
+			<li class="cl">
+			<div class="tpt-ml-3 cl">
+				<div class="main_left">
+					<if condition="$vo[commend] eq 1">
+							<div class="mod-angle tpt-none-768">
+								热
+							</div>
+							</if>
+							<if condition="C('WEB_URL') eq 1"><a title="{$vo.title}" href="__ROOT__/article/{$vo.id}.html"><else/>
+					        <a title="{$vo.title}" href="{:U('Home/index/article',array('id'=>$vo['id']))}"></if>
+					        <if condition="$vo[pic] neq ''">
+		                    <img src="__ROOT__/Uploads{$vo.pic}" alt="{$vo.title}">
+		                    <else /> 
+                            <img src="__HOME__/img/1.jpg" alt="暂无缩略图">
+                            </if>
+					        </a>
+				</div>
+			</div>
+			<div class="tpt-mr-7">
+				<div class="main_right cl">
+					<h2><if condition="C('WEB_URL') eq 1"><a title="{$vo.title}" href="__ROOT__/article/{$vo.id}.html"><else/>
+					<a title="{$vo.title}" href="{:U('Home/index/article',array('id'=>$vo['id']))}"></if>{$vo.title}</a></h2>
+					<p>
+						<span><i class="iconfont">&#xe6a3;</i>{$vo.author}</span><span class="pipe"></span><span><i class="iconfont">&#xe7e5;</i>{$vo.name}</span><span class="pipe"></span><span><i class="iconfont">&#xe6c0;</i>{$vo.view}</span><span class="pipe"></span><span class="tpt-none-768"><i class="iconfont">&#xe64d;</i>{$vo.time|date="Y-m-d H:i:s",###}</span>
+					</p>
+					<p class="tpt-none-768">
+						{$vo.description}...
+					</p>
+				</div>
+			</div>
+			</li>
+			</if>
+			</volist>
+		</ul>
+		<div class="pages">{$page}</div>
+	</div>
+	<div class="tpt-mr-3">
+		<include file="Index:right"/>
+	</div>
+</div>
+<include file="Index:footer"/>
+</head>
+</html>

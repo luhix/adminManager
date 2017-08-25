@@ -1,0 +1,257 @@
+<include file="Public:header"/>
+<script type="text/javascript" src="__ADMIN__/js/jquery.min.js"></script>
+<div class="aright">
+<style type="text/css">
+.tpt_sels a{padding-right:15px;position:relative}
+.tpt_sels a{padding:0 20px 0 8px;color:#3B6268;background:#FFFFBA;border:1px #F8E06E solid;margin-right:5px;margin-bottom:5px;font-size:14px;height:26px;line-height:26px;display:block;float:left}
+.tpt_sels a em{width: 12px;height: 12px;font-style: normal;display: block;position: absolute;top: 7px;right: 4px;z-index: 2;background: url(__ADMIN__/img/sx.png) no-repeat 0 0;}
+</style>
+<div class="layui-tab" lay-filter="demo" style="margin: 20px 30px 20px 20px;">
+  <ul class="layui-tab-title">
+    <li class="layui-this">基本设置</li>
+    <li>常用设置</li>
+  </ul>
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+
+<form class="layui-form bform" method="post" action="{:U('conf/doedit')}" enctype="multipart/form-data">
+  <input type="hidden" name="id" value="{$c.id}">
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">网站域名</label>
+    <div class="layui-input-block">
+      <input type="text" name="yuming" value="{$c.yuming}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">网站作者</label>
+    <div class="layui-input-block">
+      <input type="text" name="author" value="{$c.author}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">作者QQ</label>
+    <div class="layui-input-block">
+      <input type="text" name="qqs" value="{$c.qqs}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">备案号</label>
+    <div class="layui-input-block">
+      <input type="text" name="beian" value="{$c.beian}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">开启投稿</label>
+    <div class="layui-input-block">
+      <input type="checkbox" title="开启" name="open" value="1" <if condition="$c['open'] eq 1">checked</if>>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">LOGO</label>
+     <div class="layui-input-block">
+     <div class="file-box">
+     <i class="layui-icon">&#xe61f;</i>
+     <input class="file-btn" type="button" value="选择图片"> 
+     <input class="file-txt" type="text" autocomplete="off" name="textfield" id="textfield"><if condition="$c[logo] neq ''"><img src="__ROOT__/Uploads{$c.logo}" height="30"><else/></if>
+     <input class="file-file" type="file" name="logo" id="logo" size="28" onchange="document.getElementById('textfield').value=this.value" /> 
+     </div>
+     </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">网站标题</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" value="{$c.title}" placeholder="必填内容" required lay-verify="required" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">关键字</label>
+    <div class="layui-input-block">
+      <textarea name="keywords" placeholder="请输入内容" class="layui-textarea">{$c.keywords}</textarea>
+    </div>
+  </div>
+
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">网站描述</label>
+    <div class="layui-input-block">
+      <textarea name="description" placeholder="请输入内容" class="layui-textarea">{$c.description}</textarea>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+	  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
+    </div>
+  </div>
+
+</form>
+	
+	</div>
+    <div class="layui-tab-item">
+
+
+	<form class="layui-form bform" method="post" action="{:U('conf/webconf')}" enctype="multipart/form-data">
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">模板名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="WEB_TPT" value="{:C('WEB_TPT')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">伪静态</label>
+    <div class="layui-input-block">
+      <input type="radio" name="WEB_URL" value="1" title="开启" <if condition="C('WEB_URL') eq 1">checked</if>>
+      <input type="radio" name="WEB_URL" value="0" title="关闭" <if condition="C('WEB_URL') eq 0">checked</if>>
+    </div>
+  </div>
+
+  <blockquote style="padding: 10px;border-left: 5px solid #FF5722;margin: 10px 0 20px 40px;" class="layui-elem-quote">请自行申请留言系统ID：<a href="http://changyan.kuaizhan.com/" style="color:#FF5722;" target="_blank">申请网址</a></blockquote>
+
+   <div class="layui-form-item">
+    <label class="layui-form-label">畅言ID</label>
+    <div class="layui-input-block">
+      <input type="text" name="WEB_CID" value="{:C('WEB_CID')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">畅言KEY</label>
+    <div class="layui-input-block">
+      <input type="text" name="WEB_CKEY" value="{:C('WEB_CKEY')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+
+  <blockquote style="padding: 10px;border-left: 5px solid #FF5722;margin: 10px 0 20px 40px;" class="layui-elem-quote">此验证码ID和KEY仅供测试，请自行申请：<a href="http://www.geetest.com/" style="color:#FF5722;" target="_blank">申请网址</a></blockquote>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">验证码ID</label>
+    <div class="layui-input-block">
+      <input type="text" name="GEETEST_ID" value="{:C('GEETEST_ID')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">验证码KEY</label>
+    <div class="layui-input-block">
+      <input type="text" name="GEETEST_KEY" value="{:C('GEETEST_KEY')}" placeholder="请输入内容" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <blockquote style="padding: 10px;border-left: 5px solid #FF5722;margin: 10px 0 20px 40px;" class="layui-elem-quote">这里可以填写你比较常用的热门标签或关键字：</blockquote>
+ 
+  <div class="tpt_item">
+	<input type="hidden" name="WEB_TAG" value="{:C('WEB_TAG')}">
+	<div id="tpt_sel" class="tpt_sels" style="margin-top: 20px;">
+		<span style="margin-bottom: 5px;float: left;margin-left: 110px;">
+		<if condition="C('WEB_TAG') neq ''"><?php $arr=explode(',', C('WEB_TAG'));foreach ($arr as $k=>$v){echo "<a href='javascript:;'>$v<em></em></a>";}?></if>
+		</span>
+		<div class="layui-form-item" style="margin-bottom: 20px;">
+			<label class="layui-form-label">文章标签</label>
+			<div class="layui-input-block">
+				<input id="tpt_input" type="text" value="" autocomplete="off" class="layui-input" style="width: 400px;float: left;margin-right: 20px;">
+				<button class="layui-btn" id="tpt_btn" type="button" style="background: #FF5722;">添加标签</button>
+			</div>
+		</div>
+	</div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+	  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
+    </div>
+  </div>
+
+</form>
+	
+	
+	</div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function() {
+	$('#tpt_input').keydown(function(e) {
+		if (e.which === 13) {
+			$("#tpt_btn").click();
+			e.preventDefault();
+			return false;
+		}
+	});
+	$("#tpt_sel").on('click', 'a>em', function() {
+		var name = "WEB_TAG";
+		var tag = $(this).parent().text();
+		$(this).parent().remove();
+		var tags = new Array();
+		$("#tpt_sel").find('a').each(function() {
+			tags.push($(this).text());
+		});
+		$("input[name=" + name + "]").val(tags.join(","));
+		$("#tpt_pre a:contains('" + tag + "')").removeClass("selected");
+	});
+	$("#tpt_btn").click(function() {
+		var name = "WEB_TAG";
+		var tags = $.trim($("input[name=" + name + "]").val());
+		if (tags !== "") {
+			tags = tags.split(",");
+		} else {
+			tags = new Array();
+		}
+		var tag = $.trim($("#tpt_input").val());
+		if (tag !== '' && $.inArray(tag, tags) === -1) {
+			tags.push(tag);
+			$("#tpt_pre a:contains('" + tag + "')").addClass("selected");
+		}
+		$("#tpt_sel").children('span').empty();
+		$.each(tags, function(k, v) {
+			$("#tpt_sel").children('span').append('<a href="javascript:;">' + v + '<em></em></a>');
+		});
+		$("input[name=" + name + "]").val(tags.join(","));
+		$("#tpt_input").val('');
+	});
+	$("#tpt_pre").on('click', 'a:not(.selected)', function() {
+		var name = "WEB_TAG";
+		var tags = $.trim($("input[name=" + name + "]").val());
+		if (tags !== "") {
+			tags = tags.split(",");
+		} else {
+			tags = new Array();
+		}
+		var tag = $.trim($(this).text());
+		if (tag !== '' && $.inArray(tag, tags) === -1) {
+			tags.push(tag);
+		}
+		$("#tpt_sel").children('span').empty();
+		$.each(tags, function(k, v) {
+			$("#tpt_sel").children('span').append('<a href="javascript:;">' + v + '<em></em></a>');
+		});
+		$("input[name=" + name + "]").val(tags.join(","));
+		$(this).addClass('selected');
+	});
+});
+</script>
+<script>
+layui.use('form', function(){
+  var form = layui.form();
+});
+layui.use('element', function(){
+  var element = layui.element();
+  element.on('tab(demo)', function(data){
+    console.log(data);
+  });
+});
+</script>
+</div>
+</div>
+</body>
+</html>

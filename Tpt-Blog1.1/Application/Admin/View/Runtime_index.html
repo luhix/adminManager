@@ -1,0 +1,58 @@
+<include file="Public:header"/>
+<div class="aright">
+
+<fieldset class="layui-elem-field layui-field-title" style="margin: 20px 30px 20px 20px;">
+  <legend>添加栏目</legend>
+</fieldset>
+
+<form class="layui-form bform" method="post" action="{:U('Runtime/doClear')}" enctype="multipart/form-data">
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">模板缓存</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="data[]" value="Cache" title="清理" checked="">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">数据缓存</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="data[]" value="Temp" title="清理">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">数据目录</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="data[]" value="Data" title="清理">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">日志文件</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="data[]" value="Logs" title="清理">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+	  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
+    </div>
+  </div>
+
+</form>
+<script>
+layui.use('form', function(){
+  var form = layui.form();
+});
+</script>
+</div>
+</div>
+</body>
+</html>
+
+
+                           
+    

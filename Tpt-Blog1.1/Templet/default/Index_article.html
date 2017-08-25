@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>{$tpte.author} - {$tptl.title}</title>
+<meta name="keywords" content="{$tptl.keywords}"/>
+<meta name="description" content="{$tptl.description}"/>
+<include file="Index:header"/>
+<link rel="stylesheet" type="text/css" href="__ADMIN__/wangEditor/css/wangEditor.min.css">
+<style type="text/css">
+.wangEditor-container .wangEditor-txt {padding: 0;margin-top: 0;overflow-y: auto;}
+.wangEditor-container {border: 0px solid #fff;}
+.wangEditor-container .wangEditor-txt pre {border: 1px solid #f8f8f8;}
+.wangEditor-container .wangEditor-txt img {max-width: 100%;height: auto;}
+</style>
+<!-- tpt-ml-7 tpt-mr-3 -->
+<div class="tpt-wp tpt-pat-75 cl">
+	<div class="tpt-ml-7">
+	<div class="tpt-f">
+		<div class="tpt-none-768 cl">
+		<div class="bdsharebuttonbox">
+			<a href="#" class="bds_tsina1 bds_ico" data-cmd="tsina" title="分享到新浪微博"></a>
+			<a href="#" class="bds_weixin1 bds_ico" data-cmd="weixin" title="分享到微信"></a>
+			<a href="#" class="bds_qzone1 bds_ico" style="border-bottom: 0px" data-cmd="qzone" title="分享到QQ空间"></a>
+			<a href="#pinglun" class="bds_pin bds_ico2" style="margin-top: 30px;border-bottom: 0px">评论</a>
+		</div>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+	</div>
+	<div class="left3 cl">
+		<div class="content top9 cl">
+			<div class="toubu">
+				<h2>{$tptl.title}</h2>
+				<div class="toubu_span cl">
+					<span style="color:#333;">{$tptl.author}</span><span class="pipe">|</span>
+					<span>阅读：{$tptl.view}</span><span class="pipe"></span>
+					<span>发表时间：{$tptl.time|date="Y-m-d H:i:s",###}</span>
+					<span class="y"><if condition="C('WEB_URL') eq 1"><a href="__ROOT__/index/{$tpti.id}.html"><else/>
+					<a href="{:U('Home/index/category',array('id'=>$tpti['id']))}"></if>{$tpti.name}</a></span>
+				</div>
+			</div>
+			<div class="wangEditor-container cl">
+				<div class="wangEditor-txt">
+{$content}
+				</div>
+			</div>
+			<div class="neirong-shouquan">
+				<span class="c2">*文章为作者独立观点，不代表Templet360的立场<br>
+				</span>
+				<span id="pinglun">本文由Templet360发表并编辑，转载此文章须经作者同意，并请附上出处及本页链接。如有侵权，请联系本站删除。
+				</span>
+			</div>
+<div style="margin-top: 25px;"></div>
+<!-- 评论代码 -->
+<div id="SOHUCS" sid="{$tptl.id}"></div>
+<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: '{:C("WEB_CID")}',
+conf: '{:C("WEB_CKEY")}'
+});
+</script>
+<!-- END -->
+		</div>
+	    </div>
+	</div></div>
+	<div class="tpt-mr-3">
+		<include file="Index:right"/>
+	</div>
+</div>
+<!-- NET -->
+<include file="Index:footer"/>
+</body>
+</html>

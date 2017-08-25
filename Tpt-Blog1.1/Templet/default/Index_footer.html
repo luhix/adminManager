@@ -1,0 +1,37 @@
+<div class="tpt-footer footer tpt-mat-30">
+	<div class="tpt-wp cl">
+		<div class="tpt-md-1">
+			<div class="tpt-mds">
+				<p class="bq">
+Copyright© 2014-2017
+					<span class="pipe">|</span>
+                    <a class="banquan" target="_blank" href="https://www.templet360.com/">Powered by Templet360</a>
+					<span class="tpt-none-768 tpt-none-1024">
+					<span class="pipe">|</span>
+					<a href="http://www.miitbeian.gov.cn/" target="_blank">{$tpte.beian}</a>
+					<span class="pipe">|</span>
+					<a href="http://wpa.qq.com/msgrd?v=3&uin={$tpte.qqs}&site=qq&menu=yes" target="_blank" >QQ:{$tpte.qqs}</a>
+					</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+			$(document).ready(function(){
+				$('.the-nav').cbFlyout();
+			});
+</script>
+<script type="text/javascript">
+  var urlstr = location.href;
+  //alert((urlstr + '/').indexOf($(this).attr('href')));
+  var urlstatus=false;
+  $("#menu a").each(function () {
+    if ((urlstr + '/').indexOf($(this).attr('href')) > -1&&$(this).attr('href')!='') {
+      $(this).addClass('curs'); urlstatus = true;
+    } else {
+      $(this).removeClass('curs');
+    }
+  });
+  if (!urlstatus) {$("#menu a").eq(0).addClass('curs'); }
+</script>
